@@ -30,20 +30,19 @@ def CPUinfo():
     return CPUinfo
  
  def MEMinfo():
-    ''' Return the information in /proc/CPUinfo
+    ''' Return the information in /proc/meminfo
     as a dictionary in the following format:
-    CPU_info['proc0']={...}
-    CPU_info['proc1']={...}
+    mem_info['MemTotal']={...}
+    mem_info['MemFree]={...}
     '''
-    CPUinfo=OrderedDict()
+    meminfo=OrderedDict()
     procinfo=OrderedDict()
  
-    nprocs = 0
-    with open('/proc/cpuinfo') as f:
+    with open('/proc/meminfo') as f:
         for line in f:
             if not line.strip():
                 # end of one processor
-                CPUinfo['proc%s' % nprocs] = procinfo
+                meminfo['proc%s' % nprocs] = procinfo
                 nprocs=nprocs+1
                 # Reset
                 procinfo=OrderedDict()
