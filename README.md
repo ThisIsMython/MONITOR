@@ -1,2 +1,2 @@
 # monitor
-基于python的监控系统的简单实现
+基于python的监控脚本收藏
